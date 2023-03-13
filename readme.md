@@ -6,16 +6,14 @@ A way to have Latex rendered inside nvim
 
 
 ## Requirements
-requires [hologram.nvim to work](https://github.com/edluffy/hologram.nvim),
-
-only works in [kitty](https://sw.kovidgoyal.net/kitty/)
-
-you must have texlive-bin with `dvipng` binary on your system.
-
-(also probably only works on linux)
+* Requires [hologram.nvim to work](https://github.com/edluffy/hologram.nvim),
+* Only works in [kitty](https://sw.kovidgoyal.net/kitty/)
+* You must have texlive with `dvipng` binary on your system.
+  if you're on Arch , [texlive-bin](https://archlinux.org/packages/extra/x86_64/texlive-bin/) should suffice
+* Only works on linux (ymmv on mac , and erm Windows)
 
 ## How to use ?
-its fairly bairbones as of now , 
+Its fairly bairbones as of now , 
 copy latexrenderer.lua into your computer and load it 
 with `luafile /path/to/latexrenderer.lua` in your init.vim
 this will probably never become a full fledged plugin.
