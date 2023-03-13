@@ -6,7 +6,7 @@ A way to have Latex rendered inside nvim
 
 
 ## Requirements
-* Requires [hologram.nvim to work](https://github.com/edluffy/hologram.nvim),
+* Requires [hologram.nvim](https://github.com/edluffy/hologram.nvim) setup.
 * Only works in [kitty](https://sw.kovidgoyal.net/kitty/)
 * You must have texlive with `dvipng` binary on your system.
   if you're on Arch , [texlive-bin](https://archlinux.org/packages/extra/x86_64/texlive-bin/) should suffice
