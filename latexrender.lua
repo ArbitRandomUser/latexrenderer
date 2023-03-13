@@ -106,6 +106,7 @@ function insertpngs(eqpos,fnames,size)
 end
 
 function RenderLatex(opts)
+  RemoveLatex()
   eqpos = find_equations()
   lstrings = get_lstrings(eqpos)
   fnames = write_texfiles(lstrings)
