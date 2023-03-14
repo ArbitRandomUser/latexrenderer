@@ -2,7 +2,7 @@
 A way to have Latex rendered inside nvim 
 
 ## Example
-![fig](https://user-images.githubusercontent.com/58146965/224803940-6828936b-5fde-4111-bdb6-6b9e30d17ecf.png)
+![fig](https://user-images.githubusercontent.com/58146965/224890491-c4fbb91e-f366-4790-994d-87bf51bba7ee.png)
 
 
 ## Requirements
