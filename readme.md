@@ -22,6 +22,8 @@ If succesfully loaded you should have two commands
 `RenderLatex <size>` , which will scan through your buffer,
 treating everything between pairs of `$$` as Latex and render it below that line ( does not support inline math), `<size>` specifies the size of the png to render
 
+If the cursor is at an equation you can render the current equation only with `RenderLatexAtCursor <size>`. 
+
 `RemoveLatex` will remove the rendered pngs
 
 ## Bugs
