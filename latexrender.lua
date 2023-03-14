@@ -57,7 +57,7 @@ function latex_topng(fnames,size)
   end
   vim.fn.jobwait(latexjobids)
   for k,fname in pairs(fnames) do
-    jobid = vim.fn.jobstart("dvipng -D "..tonumber(size).. " -z 9  -bg Transparent -fg 'cmyk 0.00 0.04 0.21 0.02'  -o /tmp/LATEXFILE"..fname..".png".." ".."/tmp/LATEXFILE"..fname..".dvi",{cwd="/tmp",on_stdout = function (j,d,e) print() end})
+    jobid = vim.fn.jobstart("dvipng -D "..tonumber(size).. " -T tight  -bg Transparent -fg 'cmyk 0.00 0.04 0.21 0.02'  -o /tmp/LATEXFILE"..fname..".png".." ".."/tmp/LATEXFILE"..fname..".dvi",{cwd="/tmp",on_stdout = function (j,d,e) print() end})
     table.insert(dvijobids,jobid)
   end
   vim.fn.jobwait(dvijobids)
