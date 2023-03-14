@@ -13,17 +13,23 @@ A way to have Latex rendered inside nvim
 * Only works on linux (ymmv on mac , and erm Windows)
 
 ## How to use ?
+
+### Install
 It's fairly bairbones as of now , 
 copy latexrenderer.lua into your computer and load it 
 with `luafile /path/to/latexrenderer.lua` in your init.vim
-this will probably never become a full fledged plugin.
+i'll (hopefully) make this a plugin someday , but for now i'm mostly trying
+out things for myself.
 
+### Render all math
 If succesfully loaded you should have two commands 
 `RenderLatex <size>` , which will scan through your buffer,
 treating everything between pairs of `$$` as Latex and render it below that line ( does not support inline math), `<size>` specifies the size of the png to render
 
+### Render math at cursor
 If the cursor is at an equation you can render the current equation only with `RenderLatexAtCursor <size>`. 
 
+### Remove all renderings
 `RemoveLatex` will remove the rendered pngs
 
 ## Bugs
