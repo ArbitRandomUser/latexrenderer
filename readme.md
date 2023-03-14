@@ -36,4 +36,4 @@ If the cursor is at an equation you can render the current equation only with `R
 For some reason the math cant be the first or the last line :( ,
 
 ## Misc
-Colors are hardcoded (for fg of gruvbox dark) , you can change it in the line where dvipng is called
+Colors are hardcoded (for fg of gruvbox dark) , you can change it in the line (`-fg 'cmyk 0.00 0.04 0.21 0.02'`) where dvipng is called.
