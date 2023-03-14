@@ -47,6 +47,10 @@ function find_equations()
   return positions
 end
 
+function iszeropos(pos)
+  return (pos[1] == 0 and  pos[2] == 0)
+end
+
 function latex_topng(fnames,size)
   --renders the latex as png's  in /tmp
   latexjobids = {}
@@ -114,6 +118,55 @@ function RenderLatex(opts)
   insertpngs(eqpos,fnames)
 end
 
+function inbetween(curpos,pos1,pos2)
+  --checks if curpos is b/w pos1 and pos2
+  --assumes pos2 isafter pos1
+  if pos1[1]==pos2[1] then
+    --is pos1 and pos2 on same line, check column
+    if curpos[1]==pos1[1] and pos1[2]<curpos[2] and curpos[2]<pos2[2]  then
+      return true
+    end
+  elseif pos1[1]==curpos[1] and pos1[2] < curpos[2] then
+    -- now that we established pos1 and pos2 are on diff lines
+    -- if cur on line of pos1, check if cursor column after pos1 column
+    return true 
+  elseif curpos[1]==pos2[1] and curpos[2] < pos2[2]  then
+    -- if cur on line of pos2 check if pos2 is after cursor
+    return true
+  elseif pos1[1]<curpos[1] and curpos[1]<pos2[1] then
+    --if curpos ,pos1 and pos2 on different lines, just check for lines
+    return true
+  end
+  return false
+end
+
+function findenclosing_eq(curpos,positions)
+  --returns {pos1,pos2} if cursor is between some equation
+  --else returns nil
+  for i=1,counttable(positions),2 do
+    if inbetween(curpos,positions[i],positions[i+1]) then
+      return {positions[i],positions[i+1]}
+    end
+  end
+  return nil
+end
+
+function RenderLatexAtCursor(opts)
+  RemoveLatex()
+  eqpos = find_equations()
+  curpos = vim.fn.getpos('.')
+  curpos = {curpos[2],curpos[3]}
+  cureqpos = findenclosing_eq(curpos,eqpos)
+  if cureqpos ~= nil then
+    lstrings = get_lstrings(cureqpos)
+    fnames = write_texfiles(lstrings)
+    latex_topng(fnames,opts.fargs[1])
+    insertpngs(cureqpos,fnames)
+  else
+    print("cursor not in equation")
+  end
+end
+
 --function RenderLatex(opts)
 --  local timer = vim.loop.new_timer()
 --  timer:start(0,0,vim.schedule_wrap(renderlatex))
@@ -129,6 +182,9 @@ function RemoveLatex()
 end
 
 vim.api.nvim_create_user_command('RenderLatex', RenderLatex , {nargs=1, complete = function(ArgLead,CmdLine,CursorPos) 
+return {"200","300"} end })
+
+vim.api.nvim_create_user_command('RenderLatexAtCursor', RenderLatexAtCursor , {nargs=1, complete = function(ArgLead,CmdLine,CursorPos) 
 return {"200","300"} end })
 
 vim.api.nvim_create_user_command('RemoveLatex', RemoveLatex , {nargs=0})
