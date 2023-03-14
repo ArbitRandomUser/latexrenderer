@@ -17,8 +17,9 @@ A way to have Latex rendered inside nvim
 ### Install
 It's fairly bairbones as of now , 
 copy latexrenderer.lua into your computer and load it 
-with `luafile /path/to/latexrenderer.lua` in your init.vim
-i'll (hopefully) make this a plugin someday , but for now i'm mostly trying
+with `luafile /path/to/latexrenderer.lua` in your init.vim .
+
+I'll (hopefully) make this a plugin someday , but for now i'm mostly trying
 out things for myself.
 
 ### Render all math
